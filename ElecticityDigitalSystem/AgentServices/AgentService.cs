@@ -18,6 +18,39 @@ namespace ElectricityDigitalSystem.AgentServices
         
         }
 
+         public string SaveTariffPrice(TariffName tariffName)
+        {
+           
+           JsonFileService jsonFileService = new JsonFileService();
+            fileService.database.TariffName.Add(tariffName);
+            fileService.SaveChanges();
+            return tariffName.Id;
+        
+        }
+
+        public TariffName GetTariffById(string TariffId)
+        {
+              TariffName data = fileService.database.TariffName.Find(c => c.Id == TariffId);
+            if (data != null)
+            {
+                return data;
+            }
+            return null;
+        }
+       public string UpdateTariffPrice(TariffName modifiedTariff)
+        {
+            TariffName tariffPrice = this.GetTariffById(modifiedTariff.Id);
+            if(tariffPrice != null)
+            {
+                int indexOfCustomer = fileService.database.TariffName.IndexOf(tariffPrice);
+                fileService.SaveChanges();
+                Console.WriteLine("RECORDS SUCCESSFULLY UPDATED");
+                return "RECORDS SUCCESSFULLY UPDATED";
+            }
+            return "Failed, Customer not found";
+        }
+
+
         public AgentsModel GetAgentById(string agentId)
         {
             
@@ -75,6 +108,7 @@ namespace ElectricityDigitalSystem.AgentServices
         //     }
         //     return null;
         // }
+        
         public string SavePaymentDetails(AcceptAndProcessPaymentModel PaymentDetails)
         {
            

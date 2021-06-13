@@ -13,7 +13,7 @@ namespace ElectricityDigitalSystem.Data
         public List<MeterModel> Meters { get; set; } = new List<MeterModel>();
         public List<TarriffModel> Tariffs { get; set; } = new List<TarriffModel>();
         public List<AcceptAndProcessPaymentModel> AcceptingPayment { get; set; } = new List<AcceptAndProcessPaymentModel>();
-
+        public List<TariffName> TariffName { get; set; } = new List<TariffName>();
 
     }
 

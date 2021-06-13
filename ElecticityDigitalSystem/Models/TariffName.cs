@@ -2,11 +2,13 @@ using System;
 
 namespace ElectricityDigitalSystem
 {
-    public enum TariffName
+    public class TariffName
     {
-        R3 = 18,
-        D1 = 23,
-        A3 = 25,
-        S1 = 16
+        public string Id { get; set;}
+        public decimal R3 { get; set; }
+        public decimal D1 { get; set; }
+        public decimal A3 { get; set; }
+        public decimal S1 { get; set; }
     }
+   
 }

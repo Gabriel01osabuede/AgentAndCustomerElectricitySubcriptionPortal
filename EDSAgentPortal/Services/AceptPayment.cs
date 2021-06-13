@@ -15,6 +15,7 @@ namespace EDSAgentPortal
             //Creating Objects  
             JsonFileService jsonFileService = new JsonFileService();
             TarriffModel tarriffModel = new TarriffModel();
+            TariffName tariffName = new TariffName();
             AgentService agentService = new AgentService();
             var Agent = agentService.GetAgentById(AgentApplicationData.CurrentAgentId);
             AcceptAndProcessPaymentModel acceptAndProcessPaymentModel = new AcceptAndProcessPaymentModel();
@@ -32,24 +33,24 @@ namespace EDSAgentPortal
             acceptAndProcessPaymentModel.CustomerMeterNumber = Console.ReadLine();
             Console.WriteLine("Current Tariff Classes Are \nS1 = #16/KWH\nA3 = #25/KWH\nD1 = #23/KWH\nR3 = #18/KWH");
             Console.WriteLine("What Tariff Class Are You Subcribing To ?\nPress 1 for S1\nPress 2 for A3\nPress 3 for D1\nPress 4 for R3");
-            int tariffName = Convert.ToInt32(Console.ReadLine());
-            switch (tariffName)
+            int tariffSelection = Convert.ToInt32(Console.ReadLine());
+            switch (tariffSelection)
             {
                 case 1:
-                acceptAndProcessPaymentModel.TarrifName = "S1";
-                acceptAndProcessPaymentModel.PricePerUnit = Convert.ToDecimal(TariffName.S1);
+                acceptAndProcessPaymentModel.TarrifName = "S1";    
+                acceptAndProcessPaymentModel.PricePerUnit = tariffName.S1;
                 break;
                 case 2:
                 acceptAndProcessPaymentModel.TarrifName = "A3";
-                acceptAndProcessPaymentModel.PricePerUnit = Convert.ToDecimal(TariffName.A3);
+                acceptAndProcessPaymentModel.PricePerUnit = tariffName.A3;
                 break;
                 case 3:
                 acceptAndProcessPaymentModel.TarrifName = "D1";
-                acceptAndProcessPaymentModel.PricePerUnit = Convert.ToDecimal(TariffName.D1);
+                acceptAndProcessPaymentModel.PricePerUnit = tariffName.D1;
                 break;
                 case 4:
                 acceptAndProcessPaymentModel.TarrifName = "R3";
-                acceptAndProcessPaymentModel.PricePerUnit = Convert.ToDecimal(TariffName.R3);
+                acceptAndProcessPaymentModel.PricePerUnit = tariffName.R3;
                 break;
                 default:
                 Console.WriteLine("Wrong selection");
